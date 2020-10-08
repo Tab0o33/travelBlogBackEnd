@@ -1,0 +1,19 @@
+{
+  "name": "travelblogbackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tab0o33/travelBlogBackEnd.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tab0o33/travelBlogBackEnd/issues"
+  },
+  "homepage": "https://github.com/Tab0o33/travelBlogBackEnd#readme"
+}
