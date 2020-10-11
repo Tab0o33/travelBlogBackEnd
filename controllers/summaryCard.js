@@ -2,9 +2,11 @@ const SummaryCard = require('../models/SummaryCard');
 
 
 exports.createSummaryCard = (req, res, next) => {
-  delete req.body._id;
+  const summaryCardObject = JSON.parse(req.body.summaryCard);
+  delete summaryCardObject._id;
   const summaryCard = new SummaryCard({
-    ...req.body
+    ...summaryCardObject,
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   summaryCard.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
@@ -24,7 +26,12 @@ exports.getOneSummaryCard = (req, res, next) => {
 };
 
 exports.modifySummaryCard = (req, res, next) => {
-  SummaryCard.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+  const summaryCardObject = req.file ?
+    {
+      ...JSON.parse(req.body.summaryCard),
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    } : { ...req.body };
+  SummaryCard.updateOne({ _id: req.params.id }, { ...summaryCardObject, _id: req.params.id })
     .then(() => res.status(200).json({ message: 'Objet modifié !' }))
     .catch(error => res.status(400).json({ error }));
 };
