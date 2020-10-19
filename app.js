@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
+const summaryCountryRoutes = require('./routes/summaryCountry');
 const summaryCardRoutes = require('./routes/summaryCard');
 const userRoutes = require('./routes/user');
 
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+app.use('/api/summaryCountry', summaryCountryRoutes);
 app.use('/api/summaryCard', summaryCardRoutes);
 app.use('/api/auth', userRoutes);
 
