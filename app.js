@@ -7,21 +7,23 @@ const summaryCountryRoutes = require('./routes/summaryCountry');
 const summaryCardRoutes = require('./routes/summaryCard');
 const userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb+srv://travelBlogDBUser:MDPmongoTravel3333@myfirstcluster.dtfhq.mongodb.net/travelBlogDB?retryWrites=true&w=majority',
-{
-   useNewUrlParser: true,
-   useUnifiedTopology: true
-})
-.then(() => console.log('Connexion à MongoDB réussie !'))
-.catch(() => console.log('Connexion à MongoDB échouée !'));
+const credentials = require('./credentials');
+
+mongoose.connect(`mongodb+srv://${credentials.user}:${credentials.password}@${credentials.clusterName}.dtfhq.mongodb.net/${credentials.dataBaseName}?retryWrites=true&w=majority`,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log('Connexion à MongoDB réussie !'))
+    .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
 
 app.use((req, res, next) => {
-   res.setHeader('Access-Control-Allow-Origin', '*');
-   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-   next();
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    next();
 });
 
 app.use(bodyParser.json());
