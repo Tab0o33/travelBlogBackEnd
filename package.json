@@ -1,28 +1,28 @@
 {
-  "name": "travelblogbackend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Tab0o33/travelBlogBackEnd.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Tab0o33/travelBlogBackEnd/issues"
-  },
-  "homepage": "https://github.com/Tab0o33/travelBlogBackEnd#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.8",
-    "mongoose-unique-validator": "^2.0.3",
-    "multer": "^1.4.2"
-  }
+    "name": "travelblogbackend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Tab0o33/travelBlogBackEnd.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Tab0o33/travelBlogBackEnd/issues"
+    },
+    "homepage": "https://github.com/Tab0o33/travelBlogBackEnd#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.10.8",
+        "mongoose-unique-validator": "^2.0.3",
+        "multer": "^1.4.2"
+    }
 }
