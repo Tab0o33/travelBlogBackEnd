@@ -3,6 +3,7 @@ const Country = require('../models/Country');
 
 exports.createCountry = (req, res, next) => {
     const country = new Country({
+        code: req.body.code,
         label: req.body.label,
         position: req.body.position
     });
