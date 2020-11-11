@@ -6,6 +6,7 @@ const path = require('path');
 const summaryCountryRoutes = require('./routes/summaryCountry');
 const summaryCardRoutes = require('./routes/summaryCard');
 const userRoutes = require('./routes/user');
+const articleRoutes = require('./routes/article');
 
 const credentials = require('./credentials');
 
@@ -33,5 +34,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/summaryCountry', summaryCountryRoutes);
 app.use('/api/summaryCard', summaryCardRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/api/article', articleRoutes);
 
 module.exports = app;
