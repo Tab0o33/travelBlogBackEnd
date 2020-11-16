@@ -8,8 +8,15 @@ exports.createArticle = async (req, res, next) => {
     const article = new Article({
         ...articleObject,
         position: articlesDTO.length + 1,
-        mapImageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        mapImageUrl: `${req.protocol}://${req.get('host')}/images/${req.files.find(f => f.originalname === articleObject.name).filename}`
     });
+    for (const subpart of article.subparts) {
+        for (const content of subpart.contents) {
+            if (content.type === 'image') {
+                content.url = `${req.protocol}://${req.get('host')}/images/${req.files.find(f => f.originalname === content.name).filename}`
+            }
+        }
+    }
     article.save()
         .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
         .catch(error => res.status(400).json({ error }));
