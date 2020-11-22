@@ -7,6 +7,7 @@ const countryRoutes = require('./routes/country');
 const summaryCardRoutes = require('./routes/summaryCard');
 const userRoutes = require('./routes/user');
 const articleRoutes = require('./routes/article');
+const homeRoutes = require('./routes/home');
 
 const credentials = require('./credentials');
 
@@ -35,5 +36,6 @@ app.use('/api/country', countryRoutes);
 app.use('/api/summaryCard', summaryCardRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/api/article', articleRoutes);
+app.use('/api/home', homeRoutes);
 
 module.exports = app;
