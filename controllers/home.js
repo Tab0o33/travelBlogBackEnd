@@ -12,7 +12,8 @@ exports.createComment = async (req, res, next) => {
         pseudo: req.body.pseudo,
         message: req.body.message,
         postDate: req.body.postDate,
-        isAdminPost: req.body.isAdminPost
+        isAdminPost: req.body.isAdminPost,
+        subComments: []
     })
     comment.save()
         .then(() => res.status(201).json({ message: 'Commentaire enregistré !' }))
@@ -30,5 +31,15 @@ exports.getAllComments = (req, res, next) => {
             });
             res.status(200).json(comments);
         })
+        .catch(error => res.status(400).json({ error }));
+};
+
+exports.createSubComment = async (req, res, next) => {
+    Comment.findOneAndUpdate(
+        { _id: req.params.id },
+        { $push: { "subComments": { ...req.body } } },
+        { new: true }
+    )
+        .then(() => res.status(201).json({ message: 'Sous-commentaire enregistré !' }))
         .catch(error => res.status(400).json({ error }));
 };
